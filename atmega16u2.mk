@@ -15,6 +15,7 @@
 # Set the MCU accordingly to your device (e.g. at90usb1286 for a Teensy 2.0++, or atmega16u2 for an Arduino UNO R3)
 BOARD        = UNO
 MCU          = atmega16u2
+MEM_SIZE     = 400
 ARCH         = AVR8
 F_CPU        = 16000000
 F_USB        = $(F_CPU)
@@ -22,7 +23,7 @@ OPTIMIZATION = s
 TARGET       = ./$(MCU)/$(MCU)
 SRC          = Joystick.c Descriptors.c $(LUFA_SRC_USB)
 LUFA_PATH    = ./lufa/LUFA
-CC_FLAGS     = -DUSE_LUFA_CONFIG_HEADER -IConfig/ 
+CC_FLAGS     = -DUSE_LUFA_CONFIG_HEADER -DMEM_SIZE=$(MEM_SIZE) -IConfig/ 
 LD_FLAGS     =
 
 $(shell mkdir ./$(MCU))
