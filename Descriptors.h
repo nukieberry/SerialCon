@@ -13,16 +13,22 @@ typedef struct
 	USB_Descriptor_Configuration_Header_t Config;
 
 	// Joystick HID Interface
-	USB_Descriptor_Interface_t            HID_Interface;
-	USB_HID_Descriptor_HID_t              HID_JoystickHID;
-	USB_Descriptor_Endpoint_t             HID_ReportOUTEndpoint;
-	USB_Descriptor_Endpoint_t             HID_ReportINEndpoint;
+	USB_Descriptor_Interface_t            HID_Interface0;
+	USB_HID_Descriptor_HID_t              HID_JoystickHID0;
+	USB_Descriptor_Endpoint_t             HID_ReportOUTEndpoint0;
+	USB_Descriptor_Endpoint_t             HID_ReportINEndpoint0;
+
+	USB_Descriptor_Interface_t            HID_Interface1;
+	USB_HID_Descriptor_HID_t              HID_JoystickHID1;
+	USB_Descriptor_Endpoint_t             HID_ReportOUTEndpoint1;
+	USB_Descriptor_Endpoint_t             HID_ReportINEndpoint1;	
 } USB_Descriptor_Configuration_t;
 
 // Device Interface Descriptor IDs
 enum InterfaceDescriptors_t
 {
-	INTERFACE_ID_Joystick = 0, /**< Joystick interface descriptor ID */
+	INTERFACE_ID_Joystick0 = 0, /**< Joystick interface descriptor ID */
+	INTERFACE_ID_Joystick1 = 1, /**< Joystick interface descriptor ID */
 };
 
 // Device String Descriptor IDs
@@ -35,8 +41,11 @@ enum StringDescriptors_t
 
 // Macros
 // Endpoint Addresses
-#define JOYSTICK_IN_EPADDR  (ENDPOINT_DIR_IN  | 1)
-#define JOYSTICK_OUT_EPADDR (ENDPOINT_DIR_OUT | 2)
+#define JOYSTICK_IN_EPADDR0  (ENDPOINT_DIR_IN  | 1)
+#define JOYSTICK_OUT_EPADDR0 (ENDPOINT_DIR_OUT | 2)
+#define JOYSTICK_IN_EPADDR1  (ENDPOINT_DIR_IN  | 3)
+#define JOYSTICK_OUT_EPADDR1 (ENDPOINT_DIR_OUT | 4)
+
 // HID Endpoint Size
 // The Switch -needs- this to be 64.
 // The Wii U is flexible, allowing us to use the default of 8 (which did not match the original Hori descriptors).
